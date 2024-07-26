@@ -1,0 +1,21 @@
+name: supabase
+project: superbase-project
+
+apps:
+  - name: supabase
+    type: job
+    env: production
+    build:
+      method: docker
+      dockerfile: Dockerfile
+    jobs:
+      setup:
+        steps:
+          - name: Navigate to docker folder
+            run: cd supabase/docker
+          - name: Copy environment variables
+            run: cp .env.example .env
+          - name: Pull Docker images
+            run: docker compose pull
+          - name: Start services
+            run: docker compose up -d
