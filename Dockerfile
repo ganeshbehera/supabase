@@ -5,7 +5,7 @@ FROM alpine:latest
 RUN apk add --no-cache git docker-compose
 
 # Set the working directory
-WORKDIR /supabase/docker
+WORKDIR /docker
 
 # Copy the example environment file
 RUN cp .env.example .env
